@@ -10,7 +10,7 @@ script_base=$(basename $script_file)
 
 bold=$(tput bold)
 dim=$(tput dim)
-normal=$(tput sgr0)
+normal="\033[0m"
 
 read -r -d '' HELP_TEXT <<EOF
 This is a minimal wrapper around tmux to support multiple panes in the terminal window.
@@ -68,7 +68,7 @@ handle_install() {
 }
 
 print_help() {
-    echo "$HELP_TEXT"
+    echo -e "$HELP_TEXT"
 }
 
 handle_help() {
