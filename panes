@@ -28,8 +28,10 @@ ${bold}Installation${normal}
 
     This does two things:
       1. Adds the following lines to ~/.tmux.conf :
-        ${dim}set -g pane-border-status top${normal}
-        ${dim}set -g pane-border-format " [ #T ] "${normal}
+
+      ${dim}set -g pane-border-status top${normal}
+      ${dim}set -g pane-border-format " [ #T ] "${normal}
+
       2. Creates a new script file [installation directory]/new-pane, for convenience.
 
 ${bold}tmux commands${normal}
