@@ -2,7 +2,7 @@ This program is an extremely minimal wrapper around [tmux](https://github.com/tm
 
 Copy the source file [`panes`](https://github.com/jimmymathews/panes/blob/main/panes) to a location somewhere on your path. The file name is up to you.
 
-Then:
+Then (if you called it `panes`):
 ```sh
 panes install
 ```
