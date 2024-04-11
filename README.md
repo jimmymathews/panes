@@ -8,3 +8,12 @@ panes install
 ```
 
 Use `panes --help` or `panes help` to see usage examples.
+
+![i1](screencap1.png)
+
+![i2](screencap2.png)
+
+![i3](screencap3.png)
+
+![i4](screencap4.png)
+
