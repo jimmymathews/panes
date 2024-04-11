@@ -31,6 +31,7 @@ ${bold}Installation${normal}
 
       ${dim}set -g pane-border-status top${normal}
       ${dim}set -g pane-border-format " [ #T ] "${normal}
+      ${dim}set -g mouse on${normal}
 
       2. Creates a new script file [installation directory]/new-pane, for convenience.
 
@@ -60,6 +61,7 @@ handle_install() {
     then
         echo "set -g pane-border-status top" >> ~/.tmux.conf
         echo "set -g pane-border-format \" [ #T ] \"" >> ~/.tmux.conf
+        echo "set -g mouse on" >> ~/.tmux.conf
         installed_directory=$(dirname -- "${BASH_SOURCE[0]}")
         echo "$NEW_PANE" > $installed_directory/new-pane
         chmod +x $installed_directory/new-pane
