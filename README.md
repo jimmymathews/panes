@@ -9,10 +9,9 @@ panes install
 
 Use `panes --help` or `panes help` to see usage examples.
 
-- Start
-  ![i1](screencap1.png)
--  Make a new pane
-  ![i2](screencap2.png)
-- Enter commands in new panes
-  ![i3](screencap3.png)
+<kbd>![i1](screencap1.png)</kbd>
+
+<kdb>![i2](screencap2.png)</kbd>
+
+<kbd>![i3](screencap3.png)</kbd>
 
