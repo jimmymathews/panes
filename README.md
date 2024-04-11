@@ -9,9 +9,9 @@ panes install
 
 Use `panes --help` or `panes help` to see usage examples.
 
-<kbd>![i1](screencap1.png)</kbd>
+![i1](screencap1.png)
 
-<kdb>![i2](screencap2.png)</kbd>
+![i2](screencap2.png)
 
-<kbd>![i3](screencap3.png)</kbd>
+![i3](screencap3.png)
 
