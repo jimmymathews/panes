@@ -9,8 +9,12 @@ panes install
 
 Use `panes --help` or `panes help` to see usage examples.
 
-|   |   |
-|---|---|
-| ![i1](screencap1.png) | ![i2](screencap2.png) |
-| ![i3](screencap3.png) | ![i4](screencap4.png) |
+|   |
+|---|
+| Start |
+| ![i1](screencap1.png) |
+| Make a new pane |
+| ![i2](screencap2.png) |
+| Enter commands in new panes |
+| ![i3](screencap3.png) |
 
