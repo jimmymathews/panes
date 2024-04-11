@@ -80,7 +80,7 @@ handle_help() {
 }
 
 set_first_title() {
-    first_title="$1"
+    first_title="$argument"
     if [[ "$first_title" == "" ]];
     then
         first_title="$script_base"
