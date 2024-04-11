@@ -1,0 +1,107 @@
+#!/bin/bash
+
+# Install this source file somewhere on your path, e.g. as a script file called "panes" (the name is up to you).
+
+argument="$1"
+
+script_file="${0}"
+installation_directory=$(dirname $script_file)
+script_base=$(basename $script_file)
+
+bold=$(tput bold)
+dim=$(tput dim)
+normal=$(tput sgr0)
+
+read -r -d '' HELP_TEXT <<EOF
+This is a minimal wrapper around tmux to support multiple panes in the terminal window.
+
+${bold}Usage${normal}
+    $script_base "[optional initial pane title]"
+
+${bold}Add more panes${normal}
+    new-pane "[new pane title]"
+
+${bold}Installation${normal}
+    Add this source file to a place on your path, then run:
+
+    $script_base install
+
+    This does two things:
+      1. Adds the following lines to ~/.tmux.conf :
+        ${dim}set -g pane-border-status top${normal}
+        ${dim}set -g pane-border-format " [ #T ] "${normal}
+      2. Creates a new script file [installation directory]/new-pane, for convenience.
+
+${bold}tmux commands${normal}
+    Use normal tmux commands once the program has started.
+    At a minimum, you'll need to know:
+      - Ctrl b, then up or down keys to switch between panes.
+EOF
+
+read -r -d '' NEW_PANE <<EOF
+#!/bin/bash
+source $script_file --non-interactive
+new_pane "\$1"
+EOF
+
+handle_interactive() {
+    if [[ "$argument" == "--non-interactive" ]];
+    then
+        interactive=0
+    else
+        interactive=1
+    fi
+}
+
+handle_install() {
+    if [[ "$argument" == "install" ]];
+    then
+        echo "set -g pane-border-status top" >> ~/.tmux.conf
+        echo "set -g pane-border-format \" [ #T ] \"" >> ~/.tmux.conf
+        installed_directory=$(dirname -- "${BASH_SOURCE[0]}")
+        echo "$NEW_PANE" > $installed_directory/new-pane
+        chmod +x $installed_directory/new-pane
+        exit
+    fi
+}
+
+print_help() {
+    echo "$HELP_TEXT"
+}
+
+handle_help() {
+    if [[ "$argument" == "help" || "$argument" == "--help" || "$argument" == "-h" ]];
+    then
+        print_help
+        exit
+    fi
+}
+
+set_first_title() {
+    first_title="$1"
+    if [[ "$first_title" == "" ]];
+    then
+        first_title="$script_base"
+    fi
+}
+
+new_pane() {
+    PANE_ID=$(tmux split-window -P -F "#{pane_id}")
+    tmux send-keys -t $PANE_ID "printf '\033]2;%s\033\\' '$1'; clear" Enter
+    tmux select-layout even-vertical
+}
+
+consider_interactive_start() {
+    if [[ "$interactive" == "1" ]];
+    then
+        tmux new -d -s primarypane
+        tmux send-keys -t primarypane.0 "printf '\033]2;%s\033\\' '$first_title'; clear" Enter
+        tmux attach-session -t primarypane
+    fi
+}
+
+handle_interactive
+handle_install
+handle_help
+set_first_title
+consider_interactive_start
