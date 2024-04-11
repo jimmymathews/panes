@@ -22,7 +22,7 @@ ${bold}Add more panes${normal}
     new-pane "[new pane title]"
 
 ${bold}Installation${normal}
-    Add this source file to a place on your path, then run:
+    Add this source file to a location on your path, then run:
 
     $script_base install
 
