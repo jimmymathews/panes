@@ -96,9 +96,9 @@ new_pane() {
 consider_interactive_start() {
     if [[ "$interactive" == "1" ]];
     then
-        tmux new -d -s primarypane
-        tmux send-keys -t primarypane.0 "printf '\033]2;%s\033\\' '$first_title'; clear" Enter
-        tmux attach-session -t primarypane
+        tmux new -d -s panes
+        tmux send-keys -t panes.0 "printf '\033]2;%s\033\\' '$first_title'; clear" Enter
+        tmux attach-session -t panes
     fi
 }
 
