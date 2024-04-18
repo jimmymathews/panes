@@ -1,4 +1,4 @@
-# Multiple panes in the terminal with two commands
+# Multiple panes in the terminal
 
 You only have to remember two commands:
 
